@@ -4,7 +4,7 @@
   "description": "",
   "main": "config.example.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "open": "node node-clipboard-url-to-window.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pulipulichen/Node-Clipboard-URL-to-Window#readme",
   "dependencies": {
-    "clipboardy": "^2.3.0"
+    "clipboardy": "^2.3.0",
+    "open-file-explorer": "^1.0.2"
   }
 }

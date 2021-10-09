@@ -1,38 +1,41 @@
-const { exec } = require("child_process");
+const { exec } = require("child_process")
 const fs = require('fs')
-
-fs.writeFileSync('./log.txt', '1')
+const path = require('path')
+const openExplorer = require('open-file-explorer')
 
 if (fs.existsSync('./config.js') === false) {
   fs.copyFileSync('./config.example.js', './config.js')
 }
 
-fs.writeFileSync('./log.txt', '2')
-
 const config = require('./config.js')
-
-let chromePath = config.chromePath
-
-fs.writeFileSync('./log.txt', '3')
 
 // ----------------
 const clipboardy = require('clipboardy');
 
 let url = clipboardy.readSync();
-let isURL = false
+let type = false
 
-fs.writeFileSync('./log.txt', '4')
+// ----------------------
 
 try {
   new URL(url)
-  isURL = true
+  type = 'url'
 } 
 catch (e) {}
 
-fs.writeFileSync('./log.txt', '5')
-
-if (isURL) {
+if (type === 'url') {
+  let chromePath = config.chromePath
   exec(`'${chromePath}' --app='${url}'`, (error, stdout, stderr) => {})
 }
 
-fs.writeFileSync('./log.txt', new Date() + ' ' + url)
+// ----------------------
+
+fs.writeFileSync('./log.txt', url + ' ' + fs.existsSync(url))
+
+
+if (fs.existsSync(url)) {
+  if (fs.lstatSync(url).isDirectory() === false) {
+    url = path.dirname(url)
+  }
+  openExplorer(url, () => {})
+} 
