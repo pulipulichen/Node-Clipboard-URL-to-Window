@@ -1,0 +1,22 @@
+{
+  "name": "node-clipboard-url-to-window",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulipulichen/Node-Clipboard-URL-to-Window.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pulipulichen/Node-Clipboard-URL-to-Window/issues"
+  },
+  "homepage": "https://github.com/pulipulichen/Node-Clipboard-URL-to-Window#readme",
+  "dependencies": {
+    "clipboardy": "^2.3.0"
+  }
+}
