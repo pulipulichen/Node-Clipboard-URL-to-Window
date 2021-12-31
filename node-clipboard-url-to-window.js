@@ -25,7 +25,9 @@ catch (e) {}
 
 if (type === 'url') {
   let chromePath = config.chromePath
-  exec(`'${chromePath}' --app='${url}'`, (error, stdout, stderr) => {})
+  let command = `"${chromePath}" --app=${url}`
+  console.log(command)
+  exec(command, (error, stdout, stderr) => {})
 }
 
 // ----------------------
