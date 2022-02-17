@@ -12,32 +12,44 @@ const config = require('./config.js')
 // ----------------
 const clipboardy = require('clipboardy');
 
-let url = clipboardy.readSync();
-let type = false
 
-// ----------------------
+function main () {
+  
+  let url = clipboardy.readSync();
+  let type = false
 
-try {
-  new URL(url)
-  type = 'url'
-} 
-catch (e) {}
+  // ----------------------
 
-if (type === 'url') {
-  let chromePath = config.chromePath
-  let command = `"${chromePath}" --app=${url}`
-  console.log(command)
-  exec(command, (error, stdout, stderr) => {})
+  try {
+    new URL(url)
+    type = 'url'
+  } 
+  catch (e) {}
+
+  if (type === 'url') {
+    let chromePath = config.chromePath
+    let command = `"${chromePath}" --app=${url}`
+    console.log(command)
+    exec(command, (error, stdout, stderr) => {})
+    return true
+  }
+
+  // ----------------------
+
+  //fs.writeFileSync('./log.txt', url + ' ' + fs.existsSync(url))
+
+  if (fs.existsSync(url)) {
+    if (fs.lstatSync(url).isDirectory() === false) {
+      url = path.dirname(url)
+    }
+    openExplorer(url, () => {})
+  } 
+  else {
+    // 單純開啟Chrome
+    let chromePath = config.chromePath
+    let command = `"${chromePath}"`
+    exec(command, (error, stdout, stderr) => {})
+  }
 }
 
-// ----------------------
-
-fs.writeFileSync('./log.txt', url + ' ' + fs.existsSync(url))
-
-
-if (fs.existsSync(url)) {
-  if (fs.lstatSync(url).isDirectory() === false) {
-    url = path.dirname(url)
-  }
-  openExplorer(url, () => {})
-} 
+main()
