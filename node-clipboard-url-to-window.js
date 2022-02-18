@@ -15,16 +15,27 @@ const clipboardy = require('clipboardy');
 
 function main () {
   
-  let url = clipboardy.readSync();
+  let url = clipboardy.readSync()
+  
+  let forceNewTab = false
+  if (fs.existsSync('./last.txt') && url === fs.readFileSync('./last.txt', 'utf8')) {
+    forceNewTab = true
+  }
+  fs.writeFileSync('./last.txt', url)
+  
   let type = false
 
   // ----------------------
 
-  try {
-    new URL(url)
-    type = 'url'
-  } 
-  catch (e) {}
+  if (forceNewTab === false) { 
+    try {
+      new URL(url)
+      type = 'url'
+    } 
+    catch (e) {}
+  }
+
+  console.log(forceNewTab, type, url, fs.readFileSync('./last.txt', 'utf8'))
 
   if (type === 'url') {
     let chromePath = config.chromePath
