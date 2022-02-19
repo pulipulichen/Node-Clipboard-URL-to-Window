@@ -49,7 +49,7 @@ function main () {
 
   //fs.writeFileSync('./log.txt', url + ' ' + fs.existsSync(url))
 
-  if (fs.existsSync(url)) {
+  if (forceNewTab === false && fs.existsSync(url)) {
     if (fs.lstatSync(url).isDirectory() === false) {
       url = path.dirname(url)
     }
