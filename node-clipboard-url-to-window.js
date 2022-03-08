@@ -35,7 +35,7 @@ function main () {
     catch (e) {}
   }
 
-  console.log(forceNewTab, type, url, fs.readFileSync('./last.txt', 'utf8'))
+  //console.log(forceNewTab, type, url, fs.readFileSync('./last.txt', 'utf8'))
 
   if (type === 'url') {
     let chromePath = config.chromePath
