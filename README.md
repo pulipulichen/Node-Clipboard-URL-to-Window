@@ -14,5 +14,3 @@ https://www.flaticon.com/premium-icon/pop-up_2116873?term=pop%20up&page=2&positi
 
 設定
 https://docs.google.com/document/d/16QNvekvlTTNjvMOym9LgVPft5pHdD387uB_OyiWNKNE/edit
-
-2122
