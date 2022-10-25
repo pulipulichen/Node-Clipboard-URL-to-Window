@@ -38,13 +38,13 @@ function main () {
 
   //console.log(forceNewTab, type, url, fs.readFileSync('./last.txt', 'utf8'))
 
-  if (type === 'url') {
-    let chromePath = config.chromePath
-    let command = `"${chromePath}" --app=${url}`
-    console.log(command)
-    exec(command, (error, stdout, stderr) => {})
-    return true
-  }
+//   if (type === 'url') {
+//     let chromePath = config.chromePath
+//     let command = `"${chromePath}" --app=${url}`
+//     console.log(command)
+//     exec(command, (error, stdout, stderr) => {})
+//     return true
+//   }
 
   // ----------------------
 
